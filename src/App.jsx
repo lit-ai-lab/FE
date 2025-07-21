@@ -119,10 +119,10 @@ const HomePage = ({ onNavigate }) => {
               <Shield className="w-12 h-12 text-white" />
             </div>
             <h1 className="text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-              국가감사 통합관리시스템
+              자체감사결과 통합분석시스템
             </h1>
             <p className="text-xl text-slate-600 font-medium mb-2">
-              Republic of Korea Board of Audit and Inspection
+              Board of Audit and Inspection
             </p>
             <p className="text-lg text-slate-500">
               감사 현황 및 통계 분석 시스템
@@ -135,34 +135,34 @@ const HomePage = ({ onNavigate }) => {
             <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <FileText className="w-10 h-10 text-slate-700" />
-                <span className="text-3xl font-bold text-slate-800">1,247</span>
+                <span className="text-3xl font-bold text-slate-800">25,274</span>
               </div>
               <p className="text-sm text-slate-600 font-semibold">총 감사 건수</p>
-              <p className="text-xs text-slate-500 mt-1">전년 대비 12% 증가</p>
+              <p className="text-xs text-slate-500 mt-1">전년 대비 00% 증가</p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <Building className="w-10 h-10 text-slate-700" />
-                <span className="text-3xl font-bold text-slate-800">156</span>
+                <span className="text-3xl font-bold text-slate-800">181</span>
               </div>
               <p className="text-sm text-slate-600 font-semibold">감사 기관</p>
-              <p className="text-xs text-slate-500 mt-1">중앙부처 및 지자체</p>
+              <p className="text-xs text-slate-500 mt-1">지자체</p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <TrendingUp className="w-10 h-10 text-slate-700" />
-                <span className="text-3xl font-bold text-slate-800">89%</span>
+                <span className="text-3xl font-bold text-slate-800">66.3%</span>
               </div>
               <p className="text-sm text-slate-600 font-semibold">완료율</p>
-              <p className="text-xs text-slate-500 mt-1">목표 대비 달성률</p>
+              <p className="text-xs text-slate-500 mt-1">보고서 요약 완료율</p>
             </div>
             <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between mb-4">
                 <Clock className="w-10 h-10 text-slate-700" />
-                <span className="text-3xl font-bold text-slate-800">24</span>
+                <span className="text-3xl font-bold text-slate-800">4,797</span>
               </div>
-              <p className="text-sm text-slate-600 font-semibold">진행 중</p>
-              <p className="text-xs text-slate-500 mt-1">현재 진행 중인 감사</p>
+              <p className="text-sm text-slate-600 font-semibold">월 평균</p>
+              <p className="text-xs text-slate-500 mt-1">전체 월 평균 감사건수</p>
             </div>
           </div>
           
@@ -273,8 +273,8 @@ const MainPage = ({ state, setState, onNavigate }) => {
       .join("&");
       console.log('[DEBUG] 생성된 queryString: ', queryString);
 
-
-      const url = `http://10.10.10.12:8000/api/viewer/${queryString ? '?' + queryString : ''}`;
+      const url = `http://localhost:8000/api/viewer/${queryString ? '?' + queryString : ''}`;
+      // const url = `http://10.10.10.12:8000/api/viewer/${queryString ? '?' + queryString : ''}`;
       console.log('[DEBUG] 생성된 filters: ', filters);
       
       const res = await fetch(url);
@@ -586,7 +586,8 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
 
   const handleDetailsClick = async (id) => {
     try {
-      const res = await fetch(`http://10.10.10.12:8000/api/viewer/${id}`);
+      const res = await fetch(`http://localhost:8000/api/viewer/${id}`);
+      // const res = await fetch(`http://10.10.10.12:8000/api/viewer/${id}`);
       if (!res.ok) throw new Error("상세 정보 요청 실패");
 
       const detailData = await res.json();
@@ -888,7 +889,8 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
     setError(null);
     try {
       const query = korRegion ? `?region=${encodeURIComponent(korRegion)}` : '';
-      const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/${query}`);
+      const res = await fetch(`http://localhost:8000/api/maps/overview/${query}`);
+      // const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/${query}`);
       if (!res.ok) throw new Error("데이터 요청 실패");
       const result = await res.json();
       setCategoryData(result.categories || []);
@@ -1228,8 +1230,15 @@ const TaskPage = ({ selectedRegion, category, data, onNavigate }) => {
 
 const DataTableDetails = ({ data, onNavigate }) => {
   const [activeTab, setActiveTab] = useState('analysisInfo');
+  const [extractedTexts, setExtractedTexts] = useState([]);
   const sampleUuid = "11eed08e-0951-e76c-9c95-f9a91c4fcb66";
-  const fileUrl = `http://10.10.10.12:8000/static/pdfs/${sampleUuid}.pdf`;
+  const fileUrl = `http://localhost:8000/static/pdfs/${sampleUuid}.pdf`;
+  // const fileUrl = `http://10.10.10.12:8000/static/pdfs/${sampleUuid}.pdf`;
+
+  // Callback for when text is extracted from PDF
+  const handleTextExtraction = (extractedData) => {
+    setExtractedTexts(prev => [...prev, extractedData]);
+  };
 
   if (!data) {
     return (
@@ -1262,7 +1271,7 @@ const DataTableDetails = ({ data, onNavigate }) => {
         {/* PDF 영역 */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h2 className="text-xl font-semibold text-slate-800 mb-4">원문 PDF</h2>
-          <PdfViewer fileUrl={fileUrl} />
+          <PdfViewer fileUrl={fileUrl} onExtractText={handleTextExtraction} />
         </div>
 
         {/* 분석 정보 */}
@@ -1295,12 +1304,37 @@ const DataTableDetails = ({ data, onNavigate }) => {
 
           {/* 탭 내용 */}
           {activeTab === 'analysisInfo' ? (
-            <div className="space-y-2 text-sm text-slate-700">
-              <p><span className="font-semibold">기관명:</span> {data.inspection_agency}</p>
-              <p><span className="font-semibold">감사날짜:</span> {data.date}</p>
-              <p><span className="font-semibold">감사사항:</span> {data.audit_note}</p>
-              <p><span className="font-semibold">감사대상:</span> {data.related_agency}</p>
-              <p><span className="font-semibold">감사결과:</span> {data.audit_result}</p>
+            <div className="space-y-4">
+              <div className="space-y-2 text-sm text-slate-700">
+                <p><span className="font-semibold">기관명:</span> {data.inspection_agency}</p>
+                <p><span className="font-semibold">감사날짜:</span> {data.date}</p>
+                <p><span className="font-semibold">감사사항:</span> {data.audit_note}</p>
+                <p><span className="font-semibold">감사대상:</span> {data.related_agency}</p>
+                <p><span className="font-semibold">감사결과:</span> {data.audit_result}</p>
+              </div>
+              
+              {/* 추출된 중요 내용 섹션 */}
+              {extractedTexts.length > 0 && (
+                <div className="border-t pt-4">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-3">추출된 중요 내용</h3>
+                  <div className="space-y-3">
+                    {extractedTexts.map((item, index) => (
+                      <div key={item.id} className="bg-yellow-50 border-l-4 border-yellow-400 p-3 rounded-r-lg">
+                        <div className="flex justify-between items-start mb-2">
+                          <span className="text-xs text-slate-500">페이지 {item.page} | {item.timestamp}</span>
+                          <button
+                            onClick={() => setExtractedTexts(prev => prev.filter(t => t.id !== item.id))}
+                            className="text-red-500 hover:text-red-700 text-xs"
+                          >
+                            삭제
+                          </button>
+                        </div>
+                        <p className="text-sm text-slate-700 leading-relaxed">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="space-y-2 text-sm text-slate-700">

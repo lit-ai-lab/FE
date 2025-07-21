@@ -360,7 +360,8 @@ export default function MapPage({ onNavigate }) {
 
     try {
       const query = regionName ? `?region=${encodeURIComponent(regionName)}` : '';
-      const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/${query}`);
+      const res = await fetch(`http://localhost:8000/api/maps/overview/${query}`);
+      // const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/${query}`);
 
       if (!res.ok) throw new Error("데이터 요청 실패");
 
@@ -498,7 +499,8 @@ const TaskPage = ({ category, onNavigate }) => {
 
       try {
         const encodedCategory = encodeURIComponent(category);
-        const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/category_detail/${encodedCategory}`);
+        const res = await fetch(`http://localhost:8000/api/maps/overview/category_detail/${encodedCategory}`);
+        // const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/category_detail/${encodedCategory}`);
         if (!res.ok) throw new Error("업무 상세 요청 실패");
         const result = await res.json(); // 백엔드에서 id 포함된 배열을 반환
         setTasks(result);

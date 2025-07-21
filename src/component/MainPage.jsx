@@ -69,8 +69,8 @@ const MainPage = ({ onNavigate }) => {
       try {
         setIsLoading(true);
         setError(null);
-
-        const res = await fetch("http://10.10.10.12:8000/api/viewer/");
+        const res = await fetch("http://localhost:8000/api/viewer/");  //로컬 개발용
+        // const res = await fetch("http://10.10.10.12:8000/api/viewer/");
         if (!res.ok) throw new Error("기본 데이터 요청 실패");
 
         const result = await res.json();
@@ -99,7 +99,8 @@ const MainPage = ({ onNavigate }) => {
         })
         .join("&");
 
-      const url = `http://10.10.10.12:8000/api/viewer/${queryString ? "?" + queryString : ""}`;
+      const url = `http://localhost:8000/api/viewer/${queryString ? "?" + queryString : ""}`;
+      // const url = `http://10.10.10.12:8000/api/viewer/${queryString ? "?" + queryString : ""}`;
       //await를 쓰면 Promise가 끝날 때까지 기다림. 순서를 보장함
       const res = await fetch(url);  //서버 요청. queryString이 비어있으면(필터 안 했을 때) 기본 전체 요청(/api/audits)이 되고, 값이 있으면 뒤에 붙음
 
@@ -136,7 +137,8 @@ const MainPage = ({ onNavigate }) => {
       setIsLoading(true);
       setError(null);
 
-      const res = await fetch("http://10.10.10.12:8000/api/viewer/");   //기다린다
+      const res = await fetch("http://localhost:8000/api/viewer/");  //로컬 개발용
+      // const res = await fetch("http://10.10.10.12:8000/api/viewer/");   //기다린다
       if(!res.ok) throw new Error("전체 데이터 요청 실패");
 
       const result = await res.json();    //또 기다림
