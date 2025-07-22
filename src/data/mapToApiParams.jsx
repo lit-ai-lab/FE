@@ -1,13 +1,13 @@
 const mapToApiParams = {
-    state: "regionId",
-    agency: "agencyId", 
-    type: "auditTypeId",
-    startDate: "startDate",
-    endDate: "endDate",
-    category: "categoryId",
-    task: "taskId",
-    specialCase: "includeSpecial",
-    keyword: "keyword"
-  };
+  state: 'regionId',
+  agency: 'agencyId',
+  type: 'auditTypeId',
+  category: 'categoryId',
+  task: 'taskId',
+  keyword: 'keyword',
+  specialCase: 'includeSpecial',
+  startDate: 'startDate',
+  endDate: 'endDate'
+};
 
 export default mapToApiParams;
