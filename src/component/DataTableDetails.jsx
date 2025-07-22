@@ -1,6 +1,6 @@
 // src/pages/DataTableDetails.jsx
 import { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Download } from 'lucide-react';
 import PdfViewer from './PdfViewer';
 
 const DataTableDetails = ({ data, onNavigate }) => {

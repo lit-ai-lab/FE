@@ -83,75 +83,76 @@ const MainPage = ({ state, setState, onNavigate }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* 헤더 네비게이션 */}
-      <nav className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Shield className="w-8 h-8 text-slate-800" />
-              <span className="ml-2 text-xl font-bold text-slate-800">감사원</span>
-            </div>
-            <div className="flex space-x-6">
-              <button 
-                onClick={() => onNavigate('home')}
-                className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Home className="w-4 h-4 mr-2" />
-                홈
-              </button>
-              <button 
-                onClick={() => onNavigate('map')}
-                className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Map className="w-4 h-4 mr-2" />
-                지역별 통계
-              </button>
-            </div>
+  <div className="min-h-screen bg-gray-50">
+    {/* 헤더 네비게이션 - Fixed */}
+    <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm border-b border-gray-200 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex items-center">
+            <Shield className="w-8 h-8 text-slate-800" />
+            <span className="ml-2 text-xl font-bold text-slate-800">감사원</span>
           </div>
-        </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* 페이지 헤더 */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">감사현황 조회</h1>
-          <p className="text-slate-600">감사 데이터를 검색하고 상세 정보를 확인하세요.</p>
-        </div>
-
-        {/* 필터링 섹션 */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-8">
-          <Filtering
-            filters={filters}
-            setFilters={(f) => setState((prev) => ({ ...prev, filters: f }))}
-            onSearch={handleSearch}
-            onReset={handleReset}
-            onStateChange={handleStateChange}
-            agencyOptions={agencyOptions}
-            selectedStateId={selectedStateId}
-            catTasks={catTasks}
-            inspectionTypes={inspection.inspection_types}
-          />
-        </div>
-
-        {/* 데이터 테이블 섹션 */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-slate-800">검색 결과</h2>
-            <p className="text-sm text-slate-600 mt-1">
-              총 {data.length}건의 감사 데이터가 조회되었습니다.
-            </p>
+          <div className="flex space-x-6">
+            <button
+              onClick={() => onNavigate('home')}
+              className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg transition-colors"
+            >
+              <Home className="w-4 h-4 mr-2" />
+              홈
+            </button>
+            <button
+              onClick={() => onNavigate('map')}
+              className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg transition-colors"
+            >
+              <Map className="w-4 h-4 mr-2" />
+              지역별 통계
+            </button>
           </div>
-          <DataTable
-            data={data}
-            isLoading={isLoading}
-            error={error}
-            onNavigate={onNavigate}
-          />
         </div>
       </div>
+    </nav>
+    
+    {/* 메인 컨텐츠 - 상단 패딩 추가 */}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">
+      {/* 페이지 헤더 */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-800 mb-2">감사현황 조회</h1>
+        <p className="text-slate-600">감사 데이터를 검색하고 상세 정보를 확인하세요.</p>
+      </div>
+      
+      {/* 필터링 섹션 */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-8">
+        <Filtering
+          filters={filters}
+          setFilters={(f) => setState((prev) => ({ ...prev, filters: f }))}
+          onSearch={handleSearch}
+          onReset={handleReset}
+          onStateChange={handleStateChange}
+          agencyOptions={agencyOptions}
+          selectedStateId={selectedStateId}
+          catTasks={catTasks}
+          inspectionTypes={inspection.inspection_types}
+        />
+      </div>
+      
+      {/* 데이터 테이블 섹션 */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-xl font-semibold text-slate-800">검색 결과</h2>
+          <p className="text-sm text-slate-600 mt-1">
+            총 {data.length}건의 감사 데이터가 조회되었습니다.
+          </p>
+        </div>
+        <DataTable
+          data={data}
+          isLoading={isLoading}
+          error={error}
+          onNavigate={onNavigate}
+        />
+      </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default MainPage;
