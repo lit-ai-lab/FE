@@ -6,11 +6,13 @@ import {
   Home, Building, ChevronRight, Search, X, Menu, Shield,
   TrendingUp, Users, Clock
 } from 'lucide-react';
-import { SVGMap } from 'react-svg-map';
-import 'react-svg-map/lib/index.css';
-import southKorea from '@svg-maps/south-korea';
+//import { SVGMap } from 'react-svg-map';
+//import 'react-svg-map/lib/index.css';
+//import southKorea from '@svg-maps/south-korea';
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import geoData from '../src/data/kr.json';
 
-import zone from '../src/data/state_agency.json';
+import zone from '../src/data/state_agency.json'; 
 import inspection from '../src/data/inspection_type.json';
 import catTasks from '../src/data/category_tasks.json';
 import PdfViewer from './component/PdfViewer';
@@ -19,12 +21,25 @@ import './app.css';
 import Plotly from 'plotly.js-dist-min';
 
 const regionNameMap = {
-  'Seoul': '서울특별시', 'Incheon': '인천광역시', 'Daejeon': '대전광역시', 'Daegu': '대구광역시',
-  'Gwangju': '광주광역시', 'Ulsan': '울산광역시', 'Busan': '부산광역시', 'Sejong': '세종특별자치시',
-  'Gyeonggi': '경기도', 'Gangwon': '강원특별자치도', 'North Chungcheong': '충청북도',
-  'South Chungcheong': '충청남도', 'North Jeolla': '전북특별자치도', 'South Jeolla': '전라남도',
-  'North Gyeongsang': '경상북도', 'South Gyeongsang': '경상남도', 'Jeju': '제주특별자치도',
+  'Seoul': '서울특별시',
+  'Busan': '부산광역시',
+  'Daegu': '대구광역시',
+  'Incheon': '인천광역시',
+  'Gwangju': '광주광역시',
+  'Daejeon': '대전광역시',
+  'Ulsan': '울산광역시',
+  'Sejong': '세종특별자치시',
+  'Gyeonggi': '경기도',
+  'Gangwon': '강원특별자치도',
+  'North Chungcheong': '충청북도',
+  'South Chungcheong': '충청남도',
+  'North Jeolla': '전라북도',
+  'South Jeolla': '전라남도',
+  'North Gyeongsang': '경상북도',
+  'South Gyeongsang': '경상남도',
+  'Jeju': '제주특별자치도'
 };
+
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
@@ -691,18 +706,33 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log("categoryData", categoryData); // 컴포넌트 최상단에서
+
+  const parsedCategoryData = categoryData.map((cat) => ({
+      ...cat,
+      category: cat.category?.trim() === '' ? '전국' : cat.category
+    }));
+
   // 선택된 분야의 task 목록
+  // const selectedTasks =
+  //   categoryData.find((c) => c.category === selectedCategory)?.tasks || [];
+ // 선택된 분야의 task 목록
   const selectedTasks =
-    categoryData.find((c) => c.category === selectedCategory)?.tasks || [];
+    parsedCategoryData.find((c) => c.category === selectedCategory)?.tasks || [];
+
 
   // 🟡 Plotly 차트 렌더링
   useEffect(() => {
-    if (!chartRef.current || !categoryData || categoryData.length === 0) return;
+    if (!chartRef.current || !categoryData || categoryData.length === 0){
+      console.warn("렌더링 조건 실패:", categoryData);
+      return;
+    }
+    console.log("✔ 도넛 차트 렌더링 시작:", categoryData);
 
     const categoryTrace = {
       type: 'pie',
-      labels: categoryData.map((cat) => cat.category),
-      values: categoryData.map((cat) => cat.count),
+      labels: parsedCategoryData.map((cat) => cat.category),
+      values: parsedCategoryData.map((cat) => cat.count),
       hole: 0.55,
       direction: 'clockwise',
       sort: false,
@@ -720,8 +750,16 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
       marker: {
         line: { width: 2, color: '#ffffff' },
         colors: [
-          '#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6',
-          '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'
+          '#4c78a8', // muted blue
+          '#f58518', // soft orange
+          '#e45756', // coral red
+          '#72b7b2', // teal green
+          '#54a24b', // soft green
+          '#eeca3b', // warm yellow
+          '#b279a2', // muted purple
+          '#ff9da7', // pinkish
+          '#9d755d', // earthy brown
+          '#bab0ab'  // grayish beige
         ]
       },
       hovertemplate: '<b>%{label}</b><br>건수: %{value}건<br>비율: %{percent}<extra></extra>',
@@ -747,9 +785,16 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
           marker: {
             line: { width: 2, color: '#ffffff' },
             colors: [
-              '#dbeafe', '#bfdbfe', '#93c5fd', '#60a5fa',
-              '#3b82f6', '#2563eb', '#1d4ed8', '#1e40af'
+              '#c3b6e5', // 연보라
+              '#a79ddf', // 라벤더
+              '#8c87d9', // 진한 라벤더
+              '#6f9de6', // 연파랑-보라 중간
+              '#4faded', // 밝은 하늘색
+              '#3898ec', // 선명한 블루
+              '#1e6ddb', // 강한 블루
+              '#153eaa'  // 진한 남색
             ]
+
           },
           hovertemplate: '<b>%{label}</b><br>건수: %{value}건<br>비율: %{percent}<extra></extra>',
           domain: { x: [0.1, 0.9], y: [0.1, 0.9] }
@@ -759,7 +804,7 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
 
     const layout = {
       title: {
-        text: `${regionName || '전국'} 분야별 감사 현황`,
+        text: `${regionName === null || regionName === '' ? '전국' : regionName} 분야별 감사 현황`,
         x: 0.5,
         font: { size: 20, family: 'Arial, sans-serif', color: '#1f2937' }
       },
@@ -790,6 +835,7 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
       displayModeBar: false
     });
 
+    
     chartRef.current.on('plotly_click', (e) => {
       const label = e.points[0].label;
       const curveNumber = e.points[0].curveNumber;
@@ -799,10 +845,8 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
         setSelectedCategory(label === selectedCategory ? null : label);
       }
     });
+  }, [parsedCategoryData, selectedCategory, regionName]);
 
-  }, [categoryData, selectedCategory, regionName]);
-
-  // 창 크기 대응
   useEffect(() => {
     const handleResize = () => {
       if (chartRef.current) {
@@ -816,7 +860,7 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8 max-w-6xl mx-auto">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-slate-800 mb-2">{regionName || '지역'} 감사 현황</h2>
+        <h2 className="text-2xl font-bold text-slate-800 mb-2">{regionName === null || regionName === '' ? '전국' : regionName} 감사 현황</h2>
         <div className="w-20 h-1 bg-slate-800 rounded-full"></div>
       </div>
 
@@ -858,8 +902,19 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
                     className="w-4 h-4 rounded mr-3 flex-shrink-0"
                     style={{
                       backgroundColor: selectedCategory 
-                        ? ['#dbeafe', '#bfdbfe', '#93c5fd', '#60a5fa', '#3b82f6', '#2563eb', '#1d4ed8', '#1e40af'][index % 8]
-                        : ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#06b6d4', '#84cc16', '#f97316', '#ec4899', '#6b7280'][index % 10]
+                        ? ['#dbeafe', '#bfdbfe', '#a5b4fc', '#818cf8', '#6366f1', '#4f46e5'][index % 6]
+                        : [
+                            '#4c78a8', // muted blue
+                            '#f58518', // soft orange
+                            '#e45756', // coral red
+                            '#72b7b2', // teal green
+                            '#54a24b', // soft green
+                            '#eeca3b', // warm yellow
+                            '#b279a2', // muted purple
+                            '#ff9da7', // soft pink
+                            '#9d755d', // earthy brown
+                            '#bab0ab'  // grayish beige
+                          ]
                     }}
                   ></div>
                   <div className="flex-1">
@@ -881,7 +936,15 @@ const DrillDownDonutChart = ({ regionName, categoryData }) => {
 const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryData }) => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const cityList = Object.keys(regionNameMap);
+
+  const cityList = useMemo(() => Object.keys(regionNameMap), []);
+
+  // ✅ 선택된 지역(selected)에 따라 한 번만 fetch 수행
+  useEffect(() => {
+    const korRegion = regionNameMap[selected] || '';
+    console.log(`📦 Fetching for ${korRegion || '전국'}`);
+    handleFetch(korRegion);
+  }, [selected]);
 
   const handleFetch = async (korRegion = '') => {
     setIsLoading(true);
@@ -900,30 +963,14 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
     }
   };
 
-  // ✅ 처음 진입 시 전국 데이터 요청
-  useEffect(() => {
-    if (selected === '') {
-      handleFetch(); // 최초 진입 시 한 번 실행
-    }
-  }, [selected]);
-
-  const handleRegionClick = (e) => {
-    const regionKey = e.target.getAttribute('name');
-    const korRegion = regionNameMap[regionKey];
-    setSelected(regionKey);
-    handleFetch(korRegion);
-  };
-
-  // 버튼 클릭 핸들러 (영문 지역명 전달받음)
-  const handleCitySelect = (engRegion='') => {
-    setSelected(engRegion);
-    const korRegion = regionNameMap[engRegion] || '';
-    handleFetch(korRegion);
+  // 버튼 클릭 핸들러 - 상태만 변경
+  const handleCitySelect = (engRegion = '') => {
+    setSelected(engRegion); // fetch는 useEffect에서
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* 헤더 네비게이션 */}
+      {/* 네비게이션 */}
       <nav className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -932,19 +979,11 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
               <span className="ml-2 text-xl font-bold text-slate-800">감사원</span>
             </div>
             <div className="flex space-x-6">
-              <button 
-                onClick={() => onNavigate('home')}
-                className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <Home className="w-4 h-4 mr-2" />
-                홈
+              <button onClick={() => onNavigate('home')} className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg">
+                <Home className="w-4 h-4 mr-2" />홈
               </button>
-              <button 
-                onClick={() => onNavigate('main')}
-                className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg transition-colors"
-              >
-                <FileText className="w-4 h-4 mr-2" />
-                감사현황 조회
+              <button onClick={() => onNavigate('main')} className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg">
+                <FileText className="w-4 h-4 mr-2" />감사현황 조회
               </button>
             </div>
           </div>
@@ -952,71 +991,52 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* 페이지 헤더 */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-800 mb-2">지역별 통계</h1>
-          <p className="text-slate-600">
-            {selected ? `${regionNameMap[selected] || selected}` : '전국'} 감사 현황을 확인하세요.
-          </p>
-        </div>
+        <h1 className="text-3xl font-bold text-slate-800 mb-2">지역별 통계</h1>
+        <p className="text-slate-600 mb-8">{selected ? regionNameMap[selected] : '전국'} 감사 현황을 확인하세요.</p>
 
-        {/* 지도 및 지역 선택 섹션 */}
         <div className="grid lg:grid-cols-3 gap-8 mb-8">
-          {/* 지도 영역 */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-slate-800 mb-4">대한민국 지도</h2>
-              <div className="relative">
-                <SVGMap
-                  map={southKorea}
-                  onLocationClick={handleRegionClick}
-                  locationClassName={(loc) =>
-                    loc.name === selected ? 'svg-map__location svg-map__location--selected' : 'svg-map__location'
-                  }
-                />
-              </div>
-              <style>{`
-                .svg-map__location { 
-                  fill: #cbd5e1; 
-                  stroke: #fff; 
-                  stroke-width: 2; 
-                  transition: fill 0.2s;
-                  cursor: pointer;
-                } 
-                .svg-map__location:hover { 
-                  fill: #94a3b8; 
-                } 
-                .svg-map__location--selected { 
-                  fill: #1e293b !important; 
+          {/* 지도 */}
+          <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-slate-800 mb-4">대한민국 지도</h2>
+            <ComposableMap projection="geoMercator" projectionConfig={{ scale: 5000, center: [127.5, 36.2] }} width={700} height={700}>
+              <Geographies geography={geoData}>
+                {({ geographies }) =>
+                  geographies.map((geo) => {
+                    const engName = geo.properties.name;
+                    const korName = regionNameMap[engName];
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        onClick={() => setSelected(engName)}
+                        style={{
+                          default: { fill: selected === engName ? "#1e293b" : "#cbd5e1", stroke: "#fff", strokeWidth: 1 },
+                          hover: { fill: "#94a3b8", cursor: "pointer" },
+                          pressed: { fill: "#1e293b" }
+                        }}
+                      />
+                    );
+                  })
                 }
-              `}</style>
-            </div>
+              </Geographies>
+            </ComposableMap>
           </div>
 
-          {/* 지역 선택 버튼 영역 */}
+          {/* 버튼 */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-slate-800 mb-4">지역 선택</h3>
             <div className="space-y-2">
-              {/* 전국 버튼 */}
-              <button
-                onClick={() => handleCitySelect('')}
-                className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  selected === '' 
-                    ? 'bg-slate-800 text-white' 
-                    : 'bg-gray-50 text-slate-700 hover:bg-gray-100'
-                }`}
-              >
+              <button onClick={() => handleCitySelect('')} className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${
+                selected === '' ? 'bg-slate-800 text-white' : 'bg-gray-50 text-slate-700 hover:bg-gray-100'
+              }`}>
                 전국
               </button>
-              {/* 지역 버튼들 */}
               {cityList.map((engName) => (
                 <button
                   key={engName}
                   onClick={() => handleCitySelect(engName)}
-                  className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    selected === engName 
-                      ? 'bg-slate-800 text-white' 
-                      : 'bg-gray-50 text-slate-700 hover:bg-gray-100'
+                  className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium ${
+                    selected === engName ? 'bg-slate-800 text-white' : 'bg-gray-50 text-slate-700 hover:bg-gray-100'
                   }`}
                 >
                   {regionNameMap[engName]}
@@ -1026,50 +1046,35 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
           </div>
         </div>
 
-        {/* 분야별 통계 섹션 */}
+        {/* 통계 카드 */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 mb-8">
           <div className="p-6 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-slate-800">분야별 통계</h2>
-            <p className="text-sm text-slate-600 mt-1">
-              {selected ? regionNameMap[selected] : '전국'} 지역의 분야별 감사 현황입니다.
-            </p>
+            <p className="text-sm text-slate-600 mt-1">{selected ? regionNameMap[selected] : '전국'}의 분야별 감사 현황입니다.</p>
           </div>
-          
           <div className="p-6">
             {isLoading && (
-              <div className="flex items-center justify-center py-12">
+              <div className="flex justify-center items-center py-12">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-800 mr-3"></div>
                 <span className="text-slate-600">데이터를 불러오는 중...</span>
               </div>
             )}
-            
             {error && (
-              <div className="text-center py-12">
-                <div className="text-red-600 text-lg font-medium mb-2">오류 발생</div>
-                <div className="text-slate-600">{error}</div>
-              </div>
+              <div className="text-center text-red-600 py-8">{error}</div>
             )}
-            
             {!isLoading && !error && categoryData.length === 0 && (
-              <div className="text-center py-12">
-                <div className="text-slate-500 text-lg">해당 지역의 데이터가 없습니다.</div>
-              </div>
+              <div className="text-center text-slate-500 py-12">해당 지역의 데이터가 없습니다.</div>
             )}
-            
             {!isLoading && !error && categoryData.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {categoryData.map((cat) => (
-                  <div key={cat.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                    <div className="flex items-center justify-between mb-3">
+                  <div key={cat.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md">
+                    <div className="flex justify-between items-center mb-3">
                       <h3 className="font-semibold text-slate-800">{cat.category}</h3>
                       <span className="text-2xl font-bold text-slate-700">{cat.count}</span>
                     </div>
-                    <button
-                      onClick={() => onNavigate('task', cat.category)}
-                      className="w-full flex items-center justify-center px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors text-sm font-medium"
-                    >
-                      <Eye className="w-4 h-4 mr-2" />
-                      상세보기
+                    <button onClick={() => onNavigate('task', cat.category)} className="w-full flex items-center justify-center px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700">
+                      <Eye className="w-4 h-4 mr-2" /> 상세보기
                     </button>
                   </div>
                 ))}
@@ -1078,12 +1083,12 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
           </div>
         </div>
 
-        {/* 차트 섹션 */}
-        {selected && categoryData.length > 0 && (
-          <DrillDownDonutChart
-            regionName={selected === '' ? '전국' : regionNameMap[selected]}
-            categoryData={categoryData}
-          />
+        {/* 차트 */}
+        {categoryData.length > 0 && (
+      <DrillDownDonutChart
+        regionName={selected === '' ? '전국' : regionNameMap[selected]}
+        categoryData={categoryData}
+      />
         )}
       </div>
     </div>
