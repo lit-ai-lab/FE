@@ -1,11 +1,11 @@
 // src/pages/HomePage.jsx
-import { Shield, FileText, Building, TrendingUp, Clock, Map, ChevronRight, Eye } from 'lucide-react';
+import { Shield, FileText, Building, FileArchive, Users, Map, ChevronRight, Eye } from 'lucide-react';
 
 const HomePage = ({ onNavigate }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
-      {/* 상단 헤더 */}
-      <nav className="bg-white shadow-sm border-b border-gray-200">
+      {/* 상단 헤더 - Fixed */}
+      <nav className="fixed top-0 left-0 right-0 bg-white shadow-sm border-b border-gray-200 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -21,7 +21,8 @@ const HomePage = ({ onNavigate }) => {
         </div>
       </nav>
 
-      <div className="flex items-center justify-center min-h-[calc(100vh-4rem)] p-4">
+      {/* 메인 컨텐츠 - 상단 패딩 추가 */}
+      <div className="flex items-center justify-center min-h-screen p-4 pt-20">
         <div className="max-w-6xl w-full">
           {/* 타이틀 */}
           <div className="text-center mb-16">
@@ -40,10 +41,10 @@ const HomePage = ({ onNavigate }) => {
 
           {/* 통계 카드 */}
           <div className="grid md:grid-cols-4 gap-6 mb-16">
-            <StatCard icon={<FileText className="w-10 h-10 text-slate-700" />} value="1,247" title="총 감사 건수" desc="전년 대비 12% 증가" />
-            <StatCard icon={<Building className="w-10 h-10 text-slate-700" />} value="156" title="감사 기관" desc="중앙부처 및 지자체" />
-            <StatCard icon={<TrendingUp className="w-10 h-10 text-slate-700" />} value="89%" title="완료율" desc="목표 대비 달성률" />
-            <StatCard icon={<Clock className="w-10 h-10 text-slate-700" />} value="24" title="진행 중" desc="현재 진행 중인 감사" />
+            <StatCard icon={<FileText className="w-10 h-10 text-slate-700" />} value="57,569" title="총 감사 건수" desc="전년 대비 12% 증가" />
+            <StatCard icon={<Building className="w-10 h-10 text-slate-700" />} value="181" title="감사 기관" desc="중앙부처 및 지자체" />
+            <StatCard icon={<FileArchive className="w-10 h-10 text-slate-700" />} value="4,917" title="문서량" desc="감사 관련 원본 파일 수" />
+            <StatCard icon={<Users className="w-10 h-10 text-slate-700" />} value="5,850" title="관련기관" desc="감사 대상 기관 수" />
           </div>
 
           {/* 네비게이션 카드 */}
@@ -52,7 +53,7 @@ const HomePage = ({ onNavigate }) => {
               icon={<FileText className="w-8 h-8 text-white" />}
               title="감사현황 조회"
               desc="감사 데이터 검색, 조회 및 상세 분석"
-              badge="최근 업데이트: 2시간 전"
+              badge="최근 수정일: 2025-07-22"
               onClick={() => onNavigate('main')}
             />
             <NavCard

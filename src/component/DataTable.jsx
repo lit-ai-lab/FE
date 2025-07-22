@@ -70,68 +70,78 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
     //컬럼 정의
     const columns = [
         { 
-        field: 'inspection_agency', 
-        headerName: '감사실시기관', 
-        width: 150,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'inspection_agency', 
+            headerName: '감사실시기관', 
+            width: 150,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'disposition_request', 
-        headerName: '처분요구명', 
-        width: 180,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'disposition_request', 
+            headerName: '처분요구명', 
+            width: 180,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'related_agency', 
-        headerName: '관련기관', 
-        width: 150,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'related_agency', 
+            headerName: '관련기관', 
+            width: 150,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'audit_result', 
-        headerName: '감사결과', 
-        width: 120,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'audit_result', 
+            headerName: '감사결과', 
+            width: 120,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'category', 
-        headerName: '분야', 
-        width: 100,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'category', 
+            headerName: '분야', 
+            width: 100,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'task', 
-        headerName: '업무', 
-        width: 120,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'task', 
+            headerName: '업무', 
+            width: 120,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'summary', 
-        headerName: '요약', 
-        width: 250,
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            field: 'summary', 
+            headerName: '요약', 
+            width: 250,
+            sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
-        field: 'special_case', 
-        headerName: '특이사례', 
-        width: 100,
-        renderCell: (params) => (
+            field: 'special_case', 
+            headerName: '특이사례', 
+            width: 100,
+            sortComparator: (a, b) => (a === true ? 1 : 0) - (b === true ? 1 : 0),
+            renderCell: (params) => (
             <span>{params.value === true ? '🟢' : ''}</span>
-        ),
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            ),
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         {
-        field: 'details',
-        headerName: '내용분석',
-        width: 120,
-        renderCell: (params) => (
+            field: 'details',
+            headerName: '내용분석',
+            width: 120,
+            sortable: false, // 정렬 제외
+            renderCell: (params) => (
             <button onClick={() => handleDetailsClick(params.row.id)}>
-            상세보기
+                상세보기
             </button>
-        ),
-        headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            ),
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         }
     ];
+
 
     // 행(row) 정의: 고유 id 필드 필요
     const rows = data.map((item) => ({
@@ -154,7 +164,7 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
             {/* ✅ 엑셀 다운로드 버튼 */}
             <div className="flex justify-end m-3">
                 <button
-                className="bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700"
+                className="bg-green-700 text-white px-3 py-2 rounded hover:bg-green-700"
                 onClick={handleExportExcel}
                 >
                     엑셀 다운로드
