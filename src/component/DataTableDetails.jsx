@@ -62,7 +62,7 @@ const DataTableDetails = ({ data, onNavigate }) => {
               <InfoItem label="핵심 키워드" value={data.keyword} />
             </div>
           </div>
-
+          
           {/* 기본정보 (하단) */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex-1">
             <h2 className="text-xl font-semibold text-slate-800 mb-4 flex items-center">

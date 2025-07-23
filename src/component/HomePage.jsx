@@ -1,7 +1,26 @@
 // src/pages/HomePage.jsx
 import { UserCheck, Landmark, ClipboardList, ShieldCheck, Map, ChevronRight, Eye, SearchCheck, MapPinned } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const HomePage = ({ onNavigate }) => {
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch('http://10.10.10.12:8000/api'); // 실제 API 주소로 교체
+        if (!res.ok) throw new Error('데이터 불러오기 실패');
+        const data = await res.json();
+        setStats(data);
+      } catch (error) {
+        console.error('📛 통계 데이터 요청 오류:', error);
+      }
+    };
+    fetchStats();
+  }, []);
+
+  if (!stats) return <div>로딩 중...</div>;
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
       {/* 상단 헤더 - Fixed */}
@@ -31,10 +50,10 @@ const HomePage = ({ onNavigate }) => {
 
           {/* 통계 카드 */}
           <div className="grid md:grid-cols-4 gap-6 mb-16">
-            <StatCard icon={<ShieldCheck className="w-10 h-10 text-slate-700" />} value="57,569" title="감사실시기관" />
-            <StatCard icon={<Landmark className="w-10 h-10 text-slate-700" />} value="181" title="감사대상기관" />
-            <StatCard icon={<ClipboardList className="w-10 h-10 text-slate-700" />} value="4,917" title="감사사항" />
-            <StatCard icon={<UserCheck className="w-10 h-10 text-slate-700" />} value="5,850" title="자체감사결과" desc="공개문 기준" />
+            <StatCard icon={<ShieldCheck className="w-10 h-10 text-slate-700" />} value={stats.inspection_agency_count.toLocaleString()} title="감사실시기관" />
+            <StatCard icon={<Landmark className="w-10 h-10 text-slate-700" />} value={stats.related_agency_count.toLocaleString()} title="감사대상기관" />
+            <StatCard icon={<ClipboardList className="w-10 h-10 text-slate-700" />} value={stats.audit_note_count.toLocaleString()} title="감사사항" />
+            <StatCard icon={<UserCheck className="w-10 h-10 text-slate-700" />} value={stats.case_uuid_count.toLocaleString()} title="자체감사결과" desc="공개문 기준" />
           </div>
 
           {/* 네비게이션 카드 */}

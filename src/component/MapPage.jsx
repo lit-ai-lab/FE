@@ -152,7 +152,7 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
                                             <span className="text-2xl font-bold text-slate-700">{cat.count}</span>
                                         </div>
                                         <button onClick={() => onNavigate('task', cat.category)} className="w-full flex items-center justify-center px-4 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700">
-                                            <Eye className="w-4 h-4 mr-2" /> 상세보기
+                                            <Eye className="w-4 h-4 mr-2" /> 업무 상세보기
                                         </button>
                                     </div>
                                 ))}
