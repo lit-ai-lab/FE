@@ -3,151 +3,150 @@ import { Filter, Search, X } from 'lucide-react';
 import zone from '../data/state_agency.json';
 
 const Filtering = ({
-  filters, setFilters,
-  onSearch, onReset,
-  catTasks, inspectionTypes
+    filters, setFilters,
+    onSearch, onReset,
+    catTasks, inspectionTypes
 }) => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
     const { name, value } = e.target;
     setFilters({
-      ...filters,
-      [name]: value,
-      ...(name === 'category' ? { task: '' } : {}),
+        ...filters,
+        [name]: value,
+        ...(name === 'category' ? { task: '' } : {}),
     });
-  };
+};
 
-  const onStateChange = (e) => {
+const onStateChange = (e) => {
     const stateId = e.target.value;
     setFilters({
-      ...filters,
-      state: stateId,
-      agency: '',
+        ...filters,
+        state: stateId,
+        agency: '',
     });
-  };
+};
 
-  const stateList = useMemo(() => {
+const stateList = useMemo(() => {
     const map = new Map();
     zone.forEach(({ stateId, stateName }) => {
-      if (!map.has(stateId)) map.set(stateId, stateName);
+        if (!map.has(stateId)) map.set(stateId, stateName);
     });
     return Array.from(map, ([stateId, stateName]) => ({ stateId, stateName }));
-  }, []);
+}, []);
 
-  const filteredAgencies = filters.state
-    ? zone.filter((z) => String(z.stateId) === String(filters.state))
+const filteredAgencies = filters.state
+    ? zone.filter((z) => String(z.stateName) === String(filters.state))
     : [];
 
-  const taskList = filters.category
+const taskList = filters.category
     ? [...(catTasks[filters.category] || [])].sort()
     : [];
 
-  const sortedInspectionTypes = [...inspectionTypes].sort((a, b) =>
+const sortedInspectionTypes = [...inspectionTypes].sort((a, b) =>
     a.name.localeCompare(b.name)
-  );
+);
 
-  return (
+return (
     <div className="p-6">
       {/* 첫 번째 줄: 감사기간 시작/종료 + 감사실시기관 + 감사종류 */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-        {/* 감사실시기관 - 권역 + 기관 */}
-        <div>
-          <label className="block text-sm font-semibold text-slate-700 mb-2">감사실시기관</label>
-          <div className="grid grid-cols-2 gap-2">
-            <select
-              name="state"
-              value={filters.state}
-              onChange={onStateChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500"
-            >
-              <option value="">권역</option>
-              {stateList.map(({ stateId, stateName }) => (
-                <option key={stateId} value={stateId}>{stateName}</option>
-              ))}
-            </select>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            {/* 감사실시기관 - 권역 + 기관 */}
+            <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">감사실시기관</label>
+            <div className="grid grid-cols-2 gap-2">
+                <select
+                name="state"
+                value={filters.state}
+                onChange={onStateChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500"
+                >
+                <option value="">권역</option>
+                {stateList.map(({ stateId, stateName }) => (
+                    <option key={stateId} value={stateName}>{stateName}</option>
+                ))}
+                </select>
 
-            <select
-              name="agency"
-              value={filters.agency}
-              onChange={handleChange}
-              disabled={!filters.state}
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 disabled:bg-gray-100"
-            >
-              <option value="">실시기관</option>
-              {filteredAgencies.map((z) => (
-                <option key={z.agencyId} value={z.agencyName}>
-                  {z.agencyName}
-                </option>
-              ))}
-            </select>
-          </div>
+                <select
+                name="agency"
+                value={filters.agency}
+                onChange={handleChange}
+                disabled={!filters.state}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 disabled:bg-gray-100"
+                >
+                <option value="">실시기관</option>
+                {filteredAgencies.map((z) => (
+                    <option key={z.agencyId} value={z.agencyName}>
+                    {z.agencyName}
+                    </option>
+                ))}
+                </select>
+            </div>
         </div>
         
         <SelectBox label="감사 종류" name="type" value={filters.type} onChange={handleChange} options={sortedInspectionTypes} optionKey="name" optionLabel="name" />
 
         <InputDate label="감사기간 (시작)" name="startDate" value={filters.startDate} onChange={handleChange} />
         <InputDate label="감사기간 (종료)" name="endDate" value={filters.endDate} onChange={handleChange} />
-      </div>
+    </div>
 
-      {/* 두 번째 줄: 분야, 업무, 특이사례 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+    {/* 두 번째 줄: 분야, 업무, 특이사례 */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <SelectBox label="분야" name="category" value={filters.category} onChange={handleChange} options={Object.keys(catTasks).map((key) => ({ key }))} optionKey="key" optionLabel="key" />
         <SelectBox label="업무" name="task" value={filters.task} onChange={handleChange} options={taskList.map((t) => ({ task: t }))} optionKey="task" optionLabel="task" disabled={!filters.category} />
         <SelectBox label="특이사례" name="specialCase" value={filters.specialCase} onChange={handleChange} options={[
-          { key: 'false', label: '미해당' },
-          { key: 'true', label: '해당' }
+            { key: 'false', label: '미해당' },
+            { key: 'true', label: '해당' }
         ]} optionKey="key" optionLabel="label" />
-      </div>
+    </div>
 
-      {/* 세 번째 줄: 키워드 검색창 */}
-      <div className="mb-6">
+    {/* 세 번째 줄: 키워드 검색창 */}
+    <div className="mb-6">
         <label className="block text-sm font-semibold text-slate-700 mb-2">키워드</label>
         <input 
-          name="keyword" 
-          value={filters.keyword} 
-          onChange={handleChange} 
-          placeholder="검색할 키워드를 입력하세요" 
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500" 
+            name="keyword" 
+            value={filters.keyword} 
+            onChange={handleChange} 
+            placeholder="검색할 키워드를 입력하세요" 
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500" 
         />
-      </div>
+    </div>
 
-      {/* 버튼 */}
-      <div className="flex space-x-4">
+    {/* 버튼 */}
+    <div className="flex space-x-4">
         <button onClick={onSearch} className="flex items-center px-6 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 transition-colors">
-          <Search className="w-4 h-4 mr-2" />
-          조회
+            <Search className="w-4 h-4 mr-2" />
+            조회
         </button>
         <button onClick={onReset} className="flex items-center px-6 py-2 bg-gray-100 text-slate-700 rounded-lg hover:bg-gray-200 transition-colors">
-          <X className="w-4 h-4 mr-2" />
-          초기화
+            <X className="w-4 h-4 mr-2" />
+            초기화
         </button>
-      </div>
+        </div>
     </div>
-  );
+    );
 };
 
 export default Filtering;
 
 // 날짜 입력 서브 컴포넌트
 const InputDate = ({ label, name, value, onChange }) => (
-  <div>
-    <label className="block text-sm font-semibold text-slate-700 mb-2">{label}</label>
-    <input type="date" name={name} value={value} onChange={onChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500" />
-  </div>
+    <div>
+        <label className="block text-sm font-semibold text-slate-700 mb-2">{label}</label>
+        <input type="date" name={name} value={value} onChange={onChange} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500" />
+    </div>
 );
 
 // 셀렉트 박스 공통
 const SelectBox = ({ label, name, value, onChange, options, optionKey, optionLabel, disabled = false }) => (
-  <div>
-    <label className="block text-sm font-semibold text-slate-700 mb-2">{label}</label>
-    <select name={name} value={value} onChange={onChange} disabled={disabled} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 disabled:bg-gray-100">
-      <option value="">전체</option>
-      {options.map((opt, idx) => (
-        <option key={idx} value={opt[optionKey]}>{opt[optionLabel]}</option>
-      ))}
-    </select>
-  </div>
+    <div>
+        <label className="block text-sm font-semibold text-slate-700 mb-2">{label}</label>
+        <select name={name} value={value} onChange={onChange} disabled={disabled} className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 disabled:bg-gray-100">
+        <option value="">전체</option>
+        {options.map((opt, idx) => (
+            <option key={idx} value={opt[optionKey]}>{opt[optionLabel]}</option>
+        ))}
+        </select>
+    </div>
 );
 
 // import { useState, useMemo } from 'react';
