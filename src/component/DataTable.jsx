@@ -1,6 +1,7 @@
 import { DataGrid } from '@mui/x-data-grid';
 import * as XLSX from 'xlsx';
 import { saveAs } from 'file-saver';
+import { Tooltip } from '@mui/material';
 
 const DataTable = ({data, isLoading, error, onNavigate}) => {
     // ✅ 엑셀 다운로드 함수
@@ -72,28 +73,28 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
         { 
             field: 'inspection_agency', 
             headerName: '감사실시기관', 
-            width: 150,
+            width: 130,
             sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
             headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
             field: 'disposition_request', 
             headerName: '처분요구명', 
-            width: 180,
+            width: 150,
             sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
             headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
             field: 'related_agency', 
             headerName: '관련기관', 
-            width: 150,
+            width: 180,
             sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
             headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
             field: 'audit_result', 
             headerName: '감사결과', 
-            width: 120,
+            width: 100,
             sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
             headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
@@ -107,21 +108,38 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
         { 
             field: 'task', 
             headerName: '업무', 
-            width: 120,
+            width: 100,
             sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
             headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
         },
         { 
             field: 'summary', 
             headerName: '요약', 
-            width: 250,
+            width: 280,
             sortComparator: (a, b) => a?.localeCompare(b, 'ko') || 0,
-            headerClassName: 'bg-slate-50 text-slate-700 font-semibold'
+            headerClassName: 'bg-slate-50 text-slate-700 font-semibold',
+            renderCell: (params) => (
+                <Tooltip title={params.value || ''} arrow placement="top-start">
+                    <div
+                    style={{
+                        whiteSpace: 'normal',
+                        wordBreak: 'break-word',
+                        lineHeight: '1.5',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 4,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        padding: '4px',
+                        textAlign: 'left',
+                    }}
+                    >{params.value}</div>
+                </Tooltip>
+            ),
         },
         { 
             field: 'special_case', 
             headerName: '특이사례', 
-            width: 100,
+            width: 80,
             sortComparator: (a, b) => (a === true ? 1 : 0) - (b === true ? 1 : 0),
             renderCell: (params) => (
             <span>{params.value === true ? '🟢' : ''}</span>
@@ -131,7 +149,7 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
         {
             field: 'details',
             headerName: '내용분석',
-            width: 120,
+            width: 80,
             sortable: false, // 정렬 제외
             renderCell: (params) => (
             <button onClick={() => handleDetailsClick(params.row.id)}>
@@ -157,6 +175,7 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
                     columns={columns}
                     pageSize={15}
                     rowsPerPageOptions={[15]}
+                    getRowHeight={() => 100}
                     pagination
                     loading={isLoading}
                 />
