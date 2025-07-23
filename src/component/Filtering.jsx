@@ -28,14 +28,14 @@ const Filtering = ({
         }, []);
     }, []);
 
-    const taskList = filters.category ? catTasks[filters.category] || [] : [];
+    const taskList = filters.category ? [...(catTasks[filters.category] || [])].sort() : [];
 
     return (
         <div className="p-6">
         {/* 기본 필터 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <InputDate label="검사일 (시작)" name="startDate" value={filters.startDate} onChange={handleChange} />
-            <InputDate label="검사일 (종료)" name="endDate" value={filters.endDate} onChange={handleChange} />
+            <InputDate label="감사기간 (시작)" name="startDate" value={filters.startDate} onChange={handleChange} />
+            <InputDate label="감사기간 (종료)" name="endDate" value={filters.endDate} onChange={handleChange} />
             <SelectBox label="광역자치단체" value={selectedStateId} onChange={onStateChange} options={stateList} optionKey="stateId" optionLabel="stateName" />
             <SelectBox label="감사실시기관" name="agency" value={filters.agency} onChange={handleChange} options={agencyOptions} optionKey="agencyName" optionLabel="agencyName" disabled={!filters.state} />
         </div>
@@ -56,8 +56,8 @@ const Filtering = ({
             <SelectBox label="업무" name="task" value={filters.task} onChange={handleChange} options={taskList.map((t) => ({ task: t }))} optionKey="task" optionLabel="task" disabled={!filters.category} />
             <SelectBox label="특이사례" name="specialCase" value={filters.specialCase} onChange={handleChange} options={[
                 { key: '', label: '전체' },
-                { key: 'false', label: '미포함' },
-                { key: 'true', label: '포함' }
+                { key: 'false', label: '미해당' },
+                { key: 'true', label: '해당' }
             ]} optionKey="key" optionLabel="label" />
             <div className="md:col-span-2">
                 <label className="block text-sm font-semibold text-slate-700 mb-2">키워드</label>
