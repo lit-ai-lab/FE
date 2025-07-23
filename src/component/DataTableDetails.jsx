@@ -1,5 +1,5 @@
 import { ChevronRight, Download } from 'lucide-react';
-import PdfViewer from './PdfViewer';
+//import PdfViewer from './PdfViewer';
 
 const DataTableDetails = ({ data, onNavigate }) => {
   //const sampleUuid = "11eed08e-0951-e76c-9c95-f9a91c4fcb66";
