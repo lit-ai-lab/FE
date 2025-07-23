@@ -30,10 +30,10 @@ const HomePage = ({ onNavigate }) => {
               <Shield className="w-12 h-12 text-white" />
             </div>
             <h1 className="text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-              국가감사 통합관리시스템
+              자체감사결과 통합관리시스템
             </h1>
             <p className="text-xl text-slate-600 font-medium mb-2">
-              Republic of Korea Board of Audit and Inspection
+              Board of Audit and Inspection
             </p>
             <p className="text-lg text-slate-500">감사 현황 및 통계 분석 시스템</p>
             <div className="w-32 h-1 bg-slate-800 mx-auto mt-8 rounded-full"></div>
@@ -41,8 +41,8 @@ const HomePage = ({ onNavigate }) => {
 
           {/* 통계 카드 */}
           <div className="grid md:grid-cols-4 gap-6 mb-16">
-            <StatCard icon={<FileText className="w-10 h-10 text-slate-700" />} value="57,569" title="총 감사 건수" desc="전년 대비 12% 증가" />
-            <StatCard icon={<Building className="w-10 h-10 text-slate-700" />} value="181" title="감사 기관" desc="중앙부처 및 지자체" />
+            <StatCard icon={<FileText className="w-10 h-10 text-slate-700" />} value="57,569" title="총 감사 건수" desc="전년 대비 00% 증가" />
+            <StatCard icon={<Building className="w-10 h-10 text-slate-700" />} value="181" title="감사 기관" desc="지자체" />
             <StatCard icon={<FileArchive className="w-10 h-10 text-slate-700" />} value="4,917" title="문서량" desc="감사 관련 원본 파일 수" />
             <StatCard icon={<Users className="w-10 h-10 text-slate-700" />} value="5,850" title="관련기관" desc="감사 대상 기관 수" />
           </div>
