@@ -2,8 +2,8 @@ import { ChevronRight, Download } from 'lucide-react';
 import PdfViewer from './PdfViewer';
 
 const DataTableDetails = ({ data, onNavigate }) => {
-  const sampleUuid = "11eed08e-0951-e76c-9c95-f9a91c4fcb66";
-  const fileUrl = `http://10.10.10.12:8000/static/pdfs/${sampleUuid}.pdf`;
+  //const sampleUuid = "11eed08e-0951-e76c-9c95-f9a91c4fcb66";
+  //const fileUrl = `http://10.10.10.12:8000/static/pdfs/${sampleUuid}.pdf`;
 
   if (!data) {
     return (
@@ -88,6 +88,7 @@ const InfoItem = ({ label, value, multiline = false, badge = false }) => (
       {label}:
     </span>
     {badge ? (
+      ///////이 부분 수정 필요
       <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
         value === '주의' ? 'bg-yellow-100 text-yellow-800' :
         value === '지적' ? 'bg-red-100 text-red-800' :
