@@ -56,7 +56,6 @@ const DataTableDetails = ({ data, onNavigate }) => {
               ['업무', data.task],
               ['요약', data.summary],
               ['핵심 키워드', data.keyword],
-              ['감사날짜', data.date],
             ]} />
           ) : (
             <InfoList data={[
@@ -64,9 +63,10 @@ const DataTableDetails = ({ data, onNavigate }) => {
               ['감사사항', data.audit_note],
               ['감사대상', data.related_agency],
               ['감사결과', data.audit_result],
+              ['감사날짜', data.date],
+              ['등록일', data.registration_date],
               ['파일형식', 'PDF'],
-              ['파일크기', `${data.file_size} KB`],
-              ['등록일', data.registration_date]
+              ['파일크기', `${Number(data.file_size).toLocaleString()} KB`],
             ]} />
           )}
         </div>
