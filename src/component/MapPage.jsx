@@ -13,8 +13,14 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
 
     // ✅ 선택된 지역(selected)에 따라 한 번만 fetch 수행
     useEffect(() => {
-        const korRegion = regionNameMap[selected] || '';
-        handleFetch(korRegion);
+        // const korRegion = regionNameMap[selected] || '';
+        // handleFetch(korRegion);
+        if (selected === null || selected === '') {
+            handleFetch(''); // 전국
+        } else {
+            const korRegion = regionNameMap[selected] || '';
+            handleFetch(korRegion);
+        }
     }, [selected]);
 
     const handleFetch = async (korRegion = '') => {

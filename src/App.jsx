@@ -13,6 +13,7 @@ import TaskPage from './component/TaskPage';
 
 export default function App(){
   const [currentPage, setCurrentPage] = useState('home');
+  const [prevPage, setPrevPage] = useState(null);
   const [selectedRegion, setSelectedRegion] = useState('');
   const [categoryData, setCategoryData] = useState([]); // 전체 카테고리 + 업무 포함
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -35,13 +36,19 @@ export default function App(){
   });
 
   const navigateTo = (page, data = null) => {
+    setPrevPage(currentPage);       // ✅ 이전 페이지 기억
     setCurrentPage(page);
     if (page === 'details') setSelectedData(data);
     if (page === 'task') setSelectedCategory(data);
     if (page === 'map') {
-    setSelectedRegion(''); // ✅ 항상 전국으로 초기화
-    setCategoryData([]); // 이전 지역 데이터도 초기화
-  }
+      // ✅ 이전 페이지가 'home' 또는 'main'이면 전국 초기화
+      if (currentPage === 'home' || currentPage === 'main') {
+        setSelectedRegion('');
+      } else {
+        setSelectedRegion(prev => prev || '');  // ✅ selectedRegion이 null 또는 undefined일 때만 전국 초기화
+      }
+      setCategoryData([]); // 이전 지역 데이터도 초기화
+    }
   };
 
   //라우팅
