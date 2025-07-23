@@ -1,5 +1,5 @@
 // src/pages/HomePage.jsx
-import { Shield, FileText, Building, FileArchive, Users, Map, ChevronRight, Eye } from 'lucide-react';
+import { UserCheck, Landmark, ClipboardList, ShieldCheck, Map, ChevronRight, Eye, SearchCheck, MapPinned } from 'lucide-react';
 
 const HomePage = ({ onNavigate }) => {
   return (
@@ -9,13 +9,7 @@ const HomePage = ({ onNavigate }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Shield className="w-8 h-8 text-slate-800" />
-              <span className="ml-2 text-xl font-bold text-slate-800">감사원</span>
-            </div>
-            <div className="flex space-x-4 text-sm text-gray-600">
-              <span>대한민국 감사원</span>
-              <span>|</span>
-              <span>Board of Audit and Inspection</span>
+              <span className="ml-2 text-xl font-bold text-slate-800">감사연구원</span>
             </div>
           </div>
         </div>
@@ -26,41 +20,35 @@ const HomePage = ({ onNavigate }) => {
         <div className="max-w-6xl w-full">
           {/* 타이틀 */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-slate-800 rounded-xl mb-8">
-              <Shield className="w-12 h-12 text-white" />
-            </div>
             <h1 className="text-5xl font-bold text-slate-800 mb-6 tracking-tight">
-              자체감사결과 통합관리시스템
+              자체감사 결과분석 시스템
             </h1>
             <p className="text-xl text-slate-600 font-medium mb-2">
-              Board of Audit and Inspection
+              2024 지방자치단체 자체감사사례에 관한 분류·요약·통계정보를 제공합니다
             </p>
-            <p className="text-lg text-slate-500">감사 현황 및 통계 분석 시스템</p>
             <div className="w-32 h-1 bg-slate-800 mx-auto mt-8 rounded-full"></div>
           </div>
 
           {/* 통계 카드 */}
           <div className="grid md:grid-cols-4 gap-6 mb-16">
-            <StatCard icon={<FileText className="w-10 h-10 text-slate-700" />} value="57,569" title="총 감사 건수" desc="전년 대비 00% 증가" />
-            <StatCard icon={<Building className="w-10 h-10 text-slate-700" />} value="181" title="감사 기관" desc="지자체" />
-            <StatCard icon={<FileArchive className="w-10 h-10 text-slate-700" />} value="4,917" title="문서량" desc="감사 관련 원본 파일 수" />
-            <StatCard icon={<Users className="w-10 h-10 text-slate-700" />} value="5,850" title="관련기관" desc="감사 대상 기관 수" />
+            <StatCard icon={<ShieldCheck className="w-10 h-10 text-slate-700" />} value="57,569" title="감사실시기관" />
+            <StatCard icon={<Landmark className="w-10 h-10 text-slate-700" />} value="181" title="감사대상기관" />
+            <StatCard icon={<ClipboardList className="w-10 h-10 text-slate-700" />} value="4,917" title="감사사항" />
+            <StatCard icon={<UserCheck className="w-10 h-10 text-slate-700" />} value="5,850" title="자체감사결과" desc="공개문 기준" />
           </div>
 
           {/* 네비게이션 카드 */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <NavCard
-              icon={<FileText className="w-8 h-8 text-white" />}
-              title="감사현황 조회"
-              desc="감사 데이터 검색, 조회 및 상세 분석"
-              badge="최근 수정일: 2025-07-22"
+              icon={<SearchCheck className="w-8 h-8 text-white" />}
+              title="감사결과 조회"
+              desc="감사결과의 분류, 요약, 상세분석"
               onClick={() => onNavigate('main')}
             />
             <NavCard
-              icon={<Map className="w-8 h-8 text-white" />}
+              icon={<MapPinned className="w-8 h-8 text-white" />}
               title="지역별 통계"
-              desc="지역별 감사 현황 및 통계 분석"
-              badge="17개 시도 데이터 연동"
+              desc="지역별, 분야/업무별 감사결과 분석"
               onClick={() => onNavigate('map')}
             />
           </div>
@@ -105,10 +93,6 @@ const NavCard = ({ icon, title, desc, badge, onClick }) => (
       {title}
     </h2>
     <p className="text-slate-600 text-lg leading-relaxed mb-6">{desc}</p>
-    <div className="flex items-center text-sm text-slate-500">
-      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-      {badge}
-    </div>
   </div>
 );
 
