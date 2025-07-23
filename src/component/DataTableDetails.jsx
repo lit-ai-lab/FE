@@ -46,20 +46,24 @@ const DataTableDetails = ({ data, onNavigate }) => {
           <h2 className="text-xl font-semibold text-slate-800 mb-4">분석 정보</h2>
 
           <div className="flex mb-6 space-x-2">
-            <TabButton label="분석 & 기본정보" active={activeTab === 'analysisInfo'} onClick={() => setActiveTab('analysisInfo')} />
-            <TabButton label="데이터 정보" active={activeTab === 'dataInfo'} onClick={() => setActiveTab('dataInfo')} />
+            <TabButton label="분석정보" active={activeTab === 'analysisInfo'} onClick={() => setActiveTab('analysisInfo')} />
+            <TabButton label="기본정보" active={activeTab === 'dataInfo'} onClick={() => setActiveTab('dataInfo')} />
           </div>
 
           {activeTab === 'analysisInfo' ? (
             <InfoList data={[
-              ['기관명', data.inspection_agency],
+              ['분야', data.category],
+              ['업무', data.task],
+              ['요약', data.summary],
+              ['핵심 키워드', data.keyword],
               ['감사날짜', data.date],
-              ['감사사항', data.audit_note],
-              ['감사대상', data.related_agency],
-              ['감사결과', data.audit_result]
             ]} />
           ) : (
             <InfoList data={[
+              ['기관명', data.inspection_agency],
+              ['감사사항', data.audit_note],
+              ['감사대상', data.related_agency],
+              ['감사결과', data.audit_result],
               ['파일형식', 'PDF'],
               ['파일크기', `${data.file_size} KB`],
               ['등록일', data.registration_date]
