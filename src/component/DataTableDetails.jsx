@@ -48,7 +48,6 @@ const DataTableDetails = ({ data, onNavigate }) => {
           </div>
         </div>
 
-        {/* 오른쪽: 분석정보 + 기본정보 */}
         <div className="flex flex-col gap-6">
           {/* 분석정보 (상단) */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex-1">
