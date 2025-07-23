@@ -169,6 +169,15 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
 
     return(
         <div className="w-full">
+            {/* ✅ 엑셀 다운로드 버튼 */}
+            <div className="flex justify-end m-3">
+                <button
+                className="bg-green-700 text-white px-2 py-1.5 rounded hover:bg-green-700"
+                onClick={handleExportExcel}
+                >
+                    엑셀 다운로드
+                </button>
+            </div>
             <div style={{ height: 600, width: '100%' }}>
                 <DataGrid
                     rows={rows}
@@ -179,15 +188,6 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
                     pagination
                     loading={isLoading}
                 />
-            </div>
-            {/* ✅ 엑셀 다운로드 버튼 */}
-            <div className="flex justify-end m-3">
-                <button
-                className="bg-green-700 text-white px-3 py-2 rounded hover:bg-green-700"
-                onClick={handleExportExcel}
-                >
-                    엑셀 다운로드
-                </button>
             </div>
     </div>
     );
