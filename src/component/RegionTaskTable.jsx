@@ -14,7 +14,7 @@ const RegionTaskTable = ({ region, tasks }) => {
                     순위
                 </th>
                 <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    업무명
+                    분야 - 업무명
                 </th>
                 </tr>
             </thead>
@@ -25,7 +25,7 @@ const RegionTaskTable = ({ region, tasks }) => {
                     {task.rank}
                     </td>
                     <td className="px-4 py-2 text-sm text-gray-700">
-                    {task.name}
+                    {task.category} - {task.name}
                     </td>
                 </tr>
                 ))}
