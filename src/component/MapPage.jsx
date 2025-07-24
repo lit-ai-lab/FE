@@ -3,6 +3,7 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import geoData from '../data/kr.json';
 import regionNameMap from '../data/regionNameMap';
 import DrillDownDonutChart from './DrillDownDonutChart';
+import ComparisonGrid from './ComparisonGrid';
 import { Shield, Home, FileText, Eye } from 'lucide-react';
 
 const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryData }) => {
@@ -69,6 +70,7 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
 
             {/* 메인 컨텐츠 - 상단 패딩 추가 */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24">
+                <ComparisonGrid />
                 <h1 className="text-3xl font-bold text-slate-800 mb-2">지역별 통계</h1>
                 <p className="text-slate-600 mb-8">{selected ? regionNameMap[selected] : '전국'} 감사 현황을 확인하세요.</p>
 
