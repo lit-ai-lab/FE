@@ -83,7 +83,7 @@ const ComparisonGrid = () => {
     const [regionData, setRegionData] = useState([]);
 
     useEffect(() => {
-        fetch('http://10.10.10.12:8000/api/maps/TOP')
+        fetch('http://10.10.10.12:8001/api/maps/TOP')
             .then((res) => res.json())
             .then((data) => setRegionData(data))
             .catch((err) => console.error('데이터 로딩 실패: ', err));

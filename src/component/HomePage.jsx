@@ -8,7 +8,7 @@ const HomePage = ({ onNavigate }) => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://10.10.10.12:8000/api'); // 실제 API 주소로 교체
+        const res = await fetch('http://10.10.10.12:8001/api'); // 실제 API 주소로 교체
         if (!res.ok) throw new Error('데이터 불러오기 실패');
         const data = await res.json();
         setStats(data);

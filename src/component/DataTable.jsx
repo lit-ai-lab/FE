@@ -54,7 +54,7 @@ const DataTable = ({data, isLoading, error, onNavigate}) => {
 
     const handleDetailsClick = async (id) => {
         try {
-        const res = await fetch(`http://10.10.10.12:8000/api/viewer/${id}`);
+        const res = await fetch(`http://10.10.10.12:8001/api/viewer/${id}`);
         if (!res.ok) throw new Error("상세 정보 요청 실패");
 
         const detailData = await res.json();

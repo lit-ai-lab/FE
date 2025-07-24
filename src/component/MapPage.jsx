@@ -2,8 +2,10 @@ import { useState, useEffect, useMemo } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import geoData from '../data/kr.json';
 import regionNameMap from '../data/regionNameMap';
-import DrillDownDonutChart from './DrillDownDonutChart';
+//import DrillDownDonutChart from './DrillDownDonutChart';
 import ComparisonGrid from './ComparisonGrid';
+//import BarPieChart from './BarPieChart';
+import ChartTabs from './ChartTabs';
 import { Shield, Home, FileText, Eye } from 'lucide-react';
 
 const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryData }) => {
@@ -29,7 +31,7 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
         setError(null);
         try {
         const query = korRegion ? `?region=${encodeURIComponent(korRegion)}` : '';
-        const res = await fetch(`http://10.10.10.12:8000/api/maps/overview/${query}`);
+        const res = await fetch(`http://10.10.10.12:8001/api/maps/overview/${query}`);
         if (!res.ok) throw new Error("데이터 요청 실패");
         const result = await res.json();
         setCategoryData(result.categories || []);
@@ -165,7 +167,7 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
 
                 {/* 차트 */}
                 {categoryData.length > 0 && (
-                    <DrillDownDonutChart
+                    <ChartTabs
                         regionName={selected === '' ? '전국' : regionNameMap[selected]}
                         categoryData={categoryData}
                     />
