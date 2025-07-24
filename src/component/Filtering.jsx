@@ -38,9 +38,9 @@ const filteredAgencies = filters.state
     ? zone.filter((z) => String(z.stateName) === String(filters.state))
     : [];
 
-const taskList = filters.category
-    ? [...(catTasks[filters.category] || [])].sort()
-    : [];
+// const taskList = filters.category
+//     ? [...(catTasks[filters.category] || [])].sort()
+//     : [];
 
 const sortedInspectionTypes = [...inspectionTypes].sort((a, b) =>
     a.name.localeCompare(b.name)
@@ -91,8 +91,24 @@ return (
 
     {/* 두 번째 줄: 분야, 업무, 특이사례 */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-        <SelectBox label="분야" name="category" value={filters.category} onChange={handleChange} options={Object.keys(catTasks).map((key) => ({ key }))} optionKey="key" optionLabel="key" />
-        <SelectBox label="업무" name="task" value={filters.task} onChange={handleChange} options={taskList.map((t) => ({ task: t }))} optionKey="task" optionLabel="task" disabled={!filters.category} />
+        <SelectBox label="분야" name="category" value={filters.category} onChange={handleChange} options={catTasks.map((item) => ({ value: item.category, label: item.category}))} optionKey="value" optionLabel="label" />
+        <SelectBox 
+            label="업무" 
+            name="task" 
+            value={filters.task} 
+            onChange={handleChange} 
+            options={
+                // 선택된 category_id에 해당하는 task 배열 찾기
+                (catTasks.find((item) => item.category === filters.category)?.task || [])
+                .map((t) => ({
+                    value: t.task,  // 실제 value
+                    label: t.task      // 표시될 라벨
+                }))
+            } 
+            optionKey="value" 
+            optionLabel="label" 
+            disabled={!filters.category} 
+        />
         <SelectBox label="특이사례" name="specialCase" value={filters.specialCase} onChange={handleChange} options={[
             { key: 'false', label: '미해당' },
             { key: 'true', label: '해당' }
