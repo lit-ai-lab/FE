@@ -55,8 +55,7 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center">
-                            <Shield className="w-8 h-8 text-slate-800" />
-                            <span className="ml-2 text-xl font-bold text-slate-800">감사원</span>
+                            <span className="ml-2 text-xl font-bold text-slate-800">감사연구원</span>
                         </div>
                         <div className="flex space-x-6">
                             <button onClick={() => onNavigate('home')} className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg">
