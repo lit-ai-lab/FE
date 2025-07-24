@@ -37,14 +37,18 @@ const ChartTabs = ({ regionName, categoryData }) => {
 
             {/* 차트 컨텐츠 */}
             <div className="p-6">
-                {activeTab === 'donut' && (
-                <div className="space-y-4">
+            {activeTab === 'donut' && (
+            <div className="space-y-4">
+                <div className="flex justify-center px-8">
+                <div className="w-full max-w-4xl">
                     <DrillDownDonutChart
                     regionName={regionName}
                     categoryData={categoryData}
                     />
                 </div>
-                )}
+                </div>
+            </div>
+        )}
 
                 {activeTab === 'barpie' && (
                 <div className="space-y-4">
