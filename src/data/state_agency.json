@@ -1,7 +1,7 @@
 [
   {
     "stateId": 12,
-    "stateName": "울산",
+    "stateName": "울산광역시",
     "agencyId": 131,
     "agencyName": "울산광역시중구"
   },
@@ -13,7 +13,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 100,
     "agencyName": "서울특별시서초구"
   },
@@ -31,7 +31,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 93,
     "agencyName": "서울특별시금천구"
   },
@@ -43,13 +43,13 @@
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 148,
     "agencyName": "전북특별자치도"
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 55,
     "agencyName": "대전광역시유성구"
   },
@@ -85,19 +85,19 @@
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 144,
     "agencyName": "인천광역시옹진군"
   },
   {
     "stateId": 12,
-    "stateName": "울산",
+    "stateName": "울산광역시",
     "agencyId": 129,
     "agencyName": "울산광역시북구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 76,
     "agencyName": "부산광역시영도구"
   },
@@ -121,13 +121,13 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 77,
     "agencyName": "부산광역시중구"
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 41,
     "agencyName": "대구광역시교육청"
   },
@@ -145,7 +145,7 @@
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 43,
     "agencyName": "대구광역시달서구"
   },
@@ -157,13 +157,13 @@
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 46,
     "agencyName": "대구광역시북구"
   },
   {
     "stateId": 15,
-    "stateName": "광주",
+    "stateName": "광주광역시",
     "agencyId": 19,
     "agencyName": "광주광역시광산구"
   },
@@ -181,19 +181,19 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 71,
     "agencyName": "부산광역시사상구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 96,
     "agencyName": "서울특별시동대문구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 99,
     "agencyName": "서울특별시서대문구"
   },
@@ -211,7 +211,7 @@
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 53,
     "agencyName": "대전광역시동구"
   },
@@ -235,7 +235,7 @@
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 28,
     "agencyName": "군산시"
   },
@@ -247,7 +247,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 89,
     "agencyName": "서울특별시관악구"
   },
@@ -259,13 +259,13 @@
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 51,
     "agencyName": "대전광역시교육청"
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 49,
     "agencyName": "대구광역시중구"
   },
@@ -277,7 +277,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 106,
     "agencyName": "서울특별시종로구"
   },
@@ -307,7 +307,7 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 65,
     "agencyName": "부산광역시교육청"
   },
@@ -319,7 +319,7 @@
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 52,
     "agencyName": "대전광역시대덕구"
   },
@@ -337,31 +337,31 @@
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 151,
     "agencyName": "정읍시"
   },
   {
     "stateId": 12,
-    "stateName": "울산",
+    "stateName": "울산광역시",
     "agencyId": 130,
     "agencyName": "울산광역시울주군"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 85,
     "agencyName": "서울특별시강남구"
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 143,
     "agencyName": "인천광역시연수구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 103,
     "agencyName": "서울특별시영등포구"
   },
@@ -385,7 +385,7 @@
   },
   {
     "stateId": 7,
-    "stateName": "세종",
+    "stateName": "세종특별자치시",
     "agencyId": 111,
     "agencyName": "세종특별자치시교육청"
   },
@@ -403,7 +403,7 @@
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 124,
     "agencyName": "완주군"
   },
@@ -415,67 +415,67 @@
   },
   {
     "stateId": 12,
-    "stateName": "울산",
+    "stateName": "울산광역시",
     "agencyId": 128,
     "agencyName": "울산광역시남구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 69,
-    "agencyName": "부산광역시부산진구"
+    "agencyName": "부산광역시진구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 90,
     "agencyName": "서울특별시광진구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 104,
     "agencyName": "서울특별시용산구"
   },
   {
     "stateId": 12,
-    "stateName": "울산",
+    "stateName": "울산광역시",
     "agencyId": 126,
     "agencyName": "울산광역시"
   },
   {
     "stateId": 15,
-    "stateName": "광주",
+    "stateName": "광주광역시",
     "agencyId": 22,
     "agencyName": "광주광역시북구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 67,
     "agencyName": "부산광역시남구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 72,
     "agencyName": "부산광역시사하구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 88,
     "agencyName": "서울특별시강서구"
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 40,
     "agencyName": "대구광역시"
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 135,
     "agencyName": "익산시"
   },
@@ -511,25 +511,25 @@
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 138,
     "agencyName": "인천광역시교육청"
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 139,
     "agencyName": "인천광역시남동구"
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 35,
     "agencyName": "남원시"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 105,
     "agencyName": "서울특별시은평구"
   },
@@ -541,7 +541,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 95,
     "agencyName": "서울특별시도봉구"
   },
@@ -553,13 +553,13 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 91,
     "agencyName": "서울특별시교육청"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 84,
     "agencyName": "서울특별시"
   },
@@ -571,13 +571,13 @@
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 42,
     "agencyName": "대구광역시남구"
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 137,
     "agencyName": "인천광역시계양구"
   },
@@ -595,7 +595,7 @@
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 122,
     "agencyName": "영월군"
   },
@@ -619,7 +619,7 @@
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 150,
     "agencyName": "정선군"
   },
@@ -637,7 +637,7 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 64,
     "agencyName": "부산광역시"
   },
@@ -649,15 +649,15 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 86,
     "agencyName": "서울특별시강동구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 78,
-    "agencyName": "부산광역시해운대구"
+    "agencyName": "부산광역시해운대구광역시"
   },
   {
     "stateId": 9,
@@ -669,11 +669,11 @@
     "stateId": 4,
     "stateName": "경기",
     "agencyId": 24,
-    "agencyName": "광주시"
+    "agencyName": "광주광역시시"
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 118,
     "agencyName": "양양군"
   },
@@ -691,7 +691,7 @@
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 45,
     "agencyName": "대구광역시동구"
   },
@@ -703,7 +703,7 @@
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 47,
     "agencyName": "대구광역시서구"
   },
@@ -721,7 +721,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 101,
     "agencyName": "서울특별시송파구"
   },
@@ -733,19 +733,19 @@
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 50,
     "agencyName": "대전광역시"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 92,
     "agencyName": "서울특별시구로구"
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 168,
     "agencyName": "태백시"
   },
@@ -763,7 +763,7 @@
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 142,
     "agencyName": "인천광역시서구"
   },
@@ -775,7 +775,7 @@
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 102,
     "agencyName": "서울특별시양천구"
   },
@@ -793,7 +793,7 @@
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 132,
     "agencyName": "원주시"
   },
@@ -805,7 +805,7 @@
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 1,
     "agencyName": "강원특별자치도교육청"
   },
@@ -823,7 +823,7 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 74,
     "agencyName": "부산광역시수영구"
   },
@@ -835,7 +835,7 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 73,
     "agencyName": "부산광역시서구"
   },
@@ -853,31 +853,31 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 70,
     "agencyName": "부산광역시북구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 87,
     "agencyName": "서울특별시강북구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 66,
     "agencyName": "부산광역시금정구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 98,
     "agencyName": "서울특별시마포구"
   },
   {
     "stateId": 15,
-    "stateName": "광주",
+    "stateName": "광주광역시",
     "agencyId": 20,
     "agencyName": "광주광역시교육청"
   },
@@ -895,31 +895,31 @@
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 136,
     "agencyName": "인천광역시"
   },
   {
     "stateId": 12,
-    "stateName": "울산",
+    "stateName": "울산광역시",
     "agencyId": 127,
     "agencyName": "울산광역시교육청"
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 141,
     "agencyName": "인천광역시미추홀구"
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 75,
     "agencyName": "부산광역시연제구"
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 112,
     "agencyName": "속초시"
   },
@@ -931,19 +931,19 @@
   },
   {
     "stateId": 14,
-    "stateName": "부산",
+    "stateName": "부산광역시",
     "agencyId": 68,
     "agencyName": "부산광역시동구"
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 54,
     "agencyName": "대전광역시서구"
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 163,
     "agencyName": "춘천시"
   },
@@ -967,43 +967,43 @@
   },
   {
     "stateId": 7,
-    "stateName": "세종",
+    "stateName": "세종특별자치시",
     "agencyId": 110,
     "agencyName": "세종특별자치시"
   },
   {
     "stateId": 8,
-    "stateName": "대전",
+    "stateName": "대전광역시",
     "agencyId": 56,
     "agencyName": "대전광역시중구"
   },
   {
     "stateId": 15,
-    "stateName": "광주",
+    "stateName": "광주광역시",
     "agencyId": 23,
     "agencyName": "광주광역시서구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 94,
     "agencyName": "서울특별시노원구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 107,
     "agencyName": "서울특별시중구"
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 48,
     "agencyName": "대구광역시수성구"
   },
   {
     "stateId": 11,
-    "stateName": "전북",
+    "stateName": "전북특별자치도",
     "agencyId": 149,
     "agencyName": "전북특별자치도교육청"
   },
@@ -1015,13 +1015,13 @@
   },
   {
     "stateId": 15,
-    "stateName": "광주",
+    "stateName": "광주광역시",
     "agencyId": 21,
     "agencyName": "광주광역시동구"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 97,
     "agencyName": "서울특별시동작구"
   },
@@ -1033,19 +1033,19 @@
   },
   {
     "stateId": 2,
-    "stateName": "강원",
+    "stateName": "강원특별자치도",
     "agencyId": 58,
     "agencyName": "동해시"
   },
   {
     "stateId": 10,
-    "stateName": "대구",
+    "stateName": "대구광역시",
     "agencyId": 44,
     "agencyName": "대구광역시달성군"
   },
   {
     "stateId": 1,
-    "stateName": "서울",
+    "stateName": "서울특별시",
     "agencyId": 108,
     "agencyName": "서울특별시중랑구"
   },
@@ -1057,7 +1057,7 @@
   },
   {
     "stateId": 3,
-    "stateName": "인천",
+    "stateName": "인천광역시",
     "agencyId": 140,
     "agencyName": "인천광역시동구"
   },
@@ -1069,7 +1069,7 @@
   },
   {
     "stateId": 17,
-    "stateName": "제주",
+    "stateName": "제주특별자치도",
     "agencyId": 152,
     "agencyName": "제주특별자치도"
   }
