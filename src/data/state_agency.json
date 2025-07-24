@@ -55,7 +55,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 179,
     "agencyName": "화성시"
   },
@@ -73,7 +73,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 170,
     "agencyName": "파주시"
   },
@@ -109,7 +109,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 114,
     "agencyName": "시흥시"
   },
@@ -133,7 +133,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 109,
     "agencyName": "성남시"
   },
@@ -175,7 +175,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 119,
     "agencyName": "양주시"
   },
@@ -199,7 +199,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 5,
     "agencyName": "경기도"
   },
@@ -241,7 +241,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 123,
     "agencyName": "오산시"
   },
@@ -253,7 +253,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 6,
     "agencyName": "경기도교육청"
   },
@@ -283,25 +283,25 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 116,
     "agencyName": "안양시"
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 57,
     "agencyName": "동두천시"
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 134,
     "agencyName": "의정부시"
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 34,
     "agencyName": "남양주시"
   },
@@ -373,13 +373,13 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 29,
     "agencyName": "군포시"
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 17,
     "agencyName": "광명시"
   },
@@ -493,7 +493,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 172,
     "agencyName": "포천시"
   },
@@ -547,7 +547,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 115,
     "agencyName": "안성시"
   },
@@ -601,7 +601,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 125,
     "agencyName": "용인시"
   },
@@ -643,7 +643,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 31,
     "agencyName": "김포시"
   },
@@ -667,7 +667,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 24,
     "agencyName": "광주광역시시"
   },
@@ -715,7 +715,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 113,
     "agencyName": "수원시"
   },
@@ -727,7 +727,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 16,
     "agencyName": "과천시"
   },
@@ -769,7 +769,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 171,
     "agencyName": "평택시"
   },
@@ -781,7 +781,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 12,
     "agencyName": "고양시"
   },
@@ -799,7 +799,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 26,
     "agencyName": "구리시"
   },
@@ -811,7 +811,7 @@
   },
   {
     "stateId": 4,
-    "stateName": "경기",
+    "stateName": "경기도",
     "agencyId": 79,
     "agencyName": "부천시"
   },

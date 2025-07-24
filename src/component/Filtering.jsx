@@ -31,8 +31,33 @@ const stateList = useMemo(() => {
     zone.forEach(({ stateId, stateName }) => {
         if (!map.has(stateId)) map.set(stateId, stateName);
     });
-    return Array.from(map, ([stateId, stateName]) => ({ stateId, stateName }));
-}, []);
+
+    // 전체 리스트 추출
+    const states = Array.from(map, ([stateId, stateName]) => ({ stateId, stateName }));
+
+    // ✅ 전국 제외
+    const filtered = states.filter(({ stateName }) => stateName !== "전국");
+
+    // ✅ 사용자 정의 정렬 순서
+    const regionOrder = [
+        "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시",
+        "세종특별자치시", "경기도", "강원특별자치도", "충청북도", "충청남도", "전북특별자치도", "전라남도",
+        "경상북도", "경상남도", "제주특별자치도"
+    ];
+
+    // ✅ regionOrder 기준 정렬
+    filtered.sort((a, b) => regionOrder.indexOf(a.stateName) - regionOrder.indexOf(b.stateName));
+
+    return filtered;
+}, [zone]);
+
+// const stateList = useMemo(() => {
+//     const map = new Map();
+//     zone.forEach(({ stateId, stateName }) => {
+//         if (!map.has(stateId)) map.set(stateId, stateName);
+//     });
+//     return Array.from(map, ([stateId, stateName]) => ({ stateId, stateName }));
+// }, []);
 
 const filteredAgencies = filters.state
     ? zone.filter((z) => String(z.stateName) === String(filters.state))
