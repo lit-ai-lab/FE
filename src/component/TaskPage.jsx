@@ -17,17 +17,12 @@ const TaskPage = ({ selectedRegion, category, data, onNavigate }) => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
                 <div className="flex items-center">
-                <Shield className="w-8 h-8 text-slate-800" />
-                <span className="ml-2 text-xl font-bold text-slate-800">감사원</span>
+                <span className="ml-2 text-xl font-bold text-slate-800">감사연구원</span>
                 </div>
                 <div className="flex space-x-6">
                 <button onClick={() => onNavigate('home')} className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg">
                     <Home className="w-4 h-4 mr-2" />
                     홈
-                </button>
-                <button onClick={() => onNavigate('map')} className="flex items-center px-4 py-2 text-slate-600 hover:text-slate-800 hover:bg-gray-50 rounded-lg">
-                    <Map className="w-4 h-4 mr-2" />
-                    지역별 통계
                 </button>
                 </div>
             </div>
@@ -81,18 +76,15 @@ const TaskPage = ({ selectedRegion, category, data, onNavigate }) => {
                     {tasks.map((task) => (
                     <div key={task.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
                         <div className="flex items-start justify-between mb-4">
-                        <h3 className="font-semibold text-slate-800 text-lg leading-tight">
-                            {task.task}
-                        </h3>
+                            <h3 className="font-semibold text-slate-800 text-lg leading-tight">
+                                {task.task}
+                            </h3>
                         </div>
                         <div className="flex items-center justify-between">
-                        <div className="text-right">
-                            <div className="text-2xl font-bold text-slate-700">{task.count}</div>
-                            <div className="text-sm text-slate-500">건</div>
-                        </div>
-                        <div className="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center">
-                            <BarChart3 className="w-6 h-6 text-slate-600" />
-                        </div>
+                            <div className="text-right">
+                                <div className="text-2xl font-bold text-slate-700">{task.count}</div>
+                                <div className="text-sm text-slate-500">건</div>
+                            </div>
                         </div>
                     </div>
                     ))}

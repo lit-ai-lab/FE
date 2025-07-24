@@ -54,7 +54,7 @@ const MainPage = ({ state, setState, onNavigate }) => {
       console.log('[DEBUG] 생성된 queryString: ', queryString);
 
 
-      const url = `http://10.10.10.12:8000/api/viewer/${queryString ? '?' + queryString : ''}`;
+      const url = `http://10.10.10.12:8001/api/viewer/${queryString ? '?' + queryString : ''}`;
       console.log('[DEBUG] 생성된 filters: ', filters);
       
       const res = await fetch(url);

@@ -83,7 +83,7 @@ const ComparisonGrid = () => {
     const [regionData, setRegionData] = useState([]);
 
     useEffect(() => {
-        fetch('http://10.10.10.12:8000/api/maps/TOP')
+        fetch('http://10.10.10.12:8001/api/maps/TOP')
             .then((res) => res.json())
             .then((data) => setRegionData(data))
             .catch((err) => console.error('데이터 로딩 실패: ', err));
@@ -111,7 +111,7 @@ const ComparisonGrid = () => {
                 ))}
                 
                 {/* 빈 영역이 있으면 플레이스홀더로 채움 */}
-                {Array.from({ length: Math.max(0, 20 - regionData.length) }).map((_, idx) => (
+                {/* {Array.from({ length: Math.max(0, 20 - regionData.length) }).map((_, idx) => (
                     <div 
                     key={`empty-${idx}`} 
                     className="bg-white border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center h-48 text-gray-400"
@@ -121,11 +121,7 @@ const ComparisonGrid = () => {
                         <div className="text-sm">데이터 없음</div>
                     </div>
                     </div>
-                ))}
-                </div>
-                
-                <div className="mt-8 text-center text-xs text-gray-500">
-                * 감사업무 순위는 최근 감사 실적을 기준으로 산정됩니다.
+                ))} */}
                 </div>
             </div>
         </div>
