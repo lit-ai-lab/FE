@@ -1,84 +1,6 @@
 import {useEffect, useState} from 'react';
 import RegionTaskTable from './RegionTaskTable';
 
-// const sampleData = [
-//     {
-//         "region": "서울특별시",
-//         "tasks": [
-//         { "rank": 1, "name": "계약" },
-//         { "rank": 2, "name": "세입(지방세)" },
-//         { "rank": 3, "name": "복무" },
-//         { "rank": 4, "name": "계약" },
-//         { "rank": 5, "name": "계약" },
-//         { "rank": 6, "name": "세입(지방세)" },
-//         { "rank": 7, "name": "복무" },
-//         { "rank": 8, "name": "계약" },
-//         { "rank": 9, "name": "복무" },
-//         { "rank": 10, "name": "계약" },
-//         ]
-//     },
-//     {
-//         "region": "부산광역시",
-//         "tasks": [
-//         { "rank": 1, "name": "계약" },
-//         { "rank": 2, "name": "세입(지방세)" },
-//         { "rank": 3, "name": "복무" },
-//         { "rank": 4, "name": "계약" },
-//         { "rank": 5, "name": "계약" },
-//         { "rank": 6, "name": "세입(지방세)" },
-//         { "rank": 7, "name": "복무" },
-//         { "rank": 8, "name": "계약" },
-//         { "rank": 9, "name": "복무" },
-//         { "rank": 10, "name": "계약" },
-//         ]
-//     },
-//     {
-//         "region": "대구광역시",
-//         "tasks": [
-//         { "rank": 1, "name": "계약" },
-//         { "rank": 2, "name": "세입(지방세)" },
-//         { "rank": 3, "name": "복무" },
-//         { "rank": 4, "name": "계약" },
-//         { "rank": 5, "name": "계약" },
-//         { "rank": 6, "name": "세입(지방세)" },
-//         { "rank": 7, "name": "복무" },
-//         { "rank": 8, "name": "계약" },
-//         { "rank": 9, "name": "복무" },
-//         { "rank": 10, "name": "계약" },
-//         ]
-//     },
-//     {
-//         "region": "인천광역시",
-//         "tasks": [
-//         { "rank": 1, "name": "계약" },
-//         { "rank": 2, "name": "세입(지방세)" },
-//         { "rank": 3, "name": "복무" },
-//         { "rank": 4, "name": "계약" },
-//         { "rank": 5, "name": "계약" },
-//         { "rank": 6, "name": "세입(지방세)" },
-//         { "rank": 7, "name": "복무" },
-//         { "rank": 8, "name": "계약" },
-//         { "rank": 9, "name": "복무" },
-//         { "rank": 10, "name": "계약" },
-//         ]
-//     },
-//     {
-//         "region": "광주광역시",
-//         "tasks": [
-//         { "rank": 1, "name": "계약" },
-//         { "rank": 2, "name": "세입(지방세)" },
-//         { "rank": 3, "name": "복무" },
-//         { "rank": 4, "name": "계약" },
-//         { "rank": 5, "name": "계약" },
-//         { "rank": 6, "name": "세입(지방세)" },
-//         { "rank": 7, "name": "복무" },
-//         { "rank": 8, "name": "계약" },
-//         { "rank": 9, "name": "복무" },
-//         { "rank": 10, "name": "계약" },
-//         ]
-//     },
-// ];
-
 const ComparisonGrid = () => {
     const [regionData, setRegionData] = useState([]);
 
@@ -109,19 +31,6 @@ const ComparisonGrid = () => {
                     tasks={region.tasks}
                     />
                 ))}
-                
-                {/* 빈 영역이 있으면 플레이스홀더로 채움 */}
-                {/* {Array.from({ length: Math.max(0, 20 - regionData.length) }).map((_, idx) => (
-                    <div 
-                    key={`empty-${idx}`} 
-                    className="bg-white border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center h-48 text-gray-400"
-                    >
-                    <div className="text-center">
-                        <div className="text-3xl mb-2">📋</div>
-                        <div className="text-sm">데이터 없음</div>
-                    </div>
-                    </div>
-                ))} */}
                 </div>
             </div>
         </div>
