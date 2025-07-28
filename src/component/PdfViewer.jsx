@@ -16,7 +16,6 @@
 
 // export default PdfViewer;
 
-
 import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.min?url';  // ✅ Vite 전용 import 방식

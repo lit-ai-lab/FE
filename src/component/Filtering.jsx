@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Filter, Search, X } from 'lucide-react';
 import zone from '../data/state_agency.json';
 

@@ -87,16 +87,16 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
 
             {/* ✅ 모달 */}
             <Modal isOpen={modalType !== null} onClose={handleCloseModal}>
-            {modalType === 'chart' && categoryData.length > 0 && (
-                <ChartTabs
-                regionName={selected === '' ? '전국' : regionNameMap[selected]}
-                categoryData={categoryData}
-                />
-            )}
-            {modalType === 'comparison' && <ComparisonGrid />}
-            {modalType === 'chart' && categoryData.length === 0 && (
-                <div className="text-center text-slate-500 py-8">데이터가 없습니다.</div>
-            )}
+                {modalType === 'chart' && categoryData.length > 0 && (
+                    <ChartTabs
+                    regionName={selected === '' ? '전국' : regionNameMap[selected]}
+                    categoryData={categoryData}
+                    />
+                )}
+                {modalType === 'comparison' && <ComparisonGrid />}
+                {modalType === 'chart' && categoryData.length === 0 && (
+                    <div className="text-center text-slate-500 py-8">데이터가 없습니다.</div>
+                )}
             </Modal>
 
             {/* 지역별 통계 */}
@@ -108,29 +108,29 @@ const MapPage = ({ selected, setSelected, onNavigate, setCategoryData, categoryD
             <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold text-slate-800 mb-4">대한민국 지도</h2>
                 <ComposableMap projection="geoMercator" projectionConfig={{ scale: 5000, center: [127.5, 36.2] }} width={700} height={700}>
-                <Geographies geography={geoData}>
-                    {({ geographies }) =>
-                    geographies.map((geo) => {
-                        const engName = geo.properties.name;
-                        return (
-                        <Geography
-                            key={geo.rsmKey}
-                            geography={geo}
-                            onClick={() => handleCitySelect(engName)}
-                            style={{
-                            default: {
-                                fill: selected === engName ? "#1e293b" : "#cbd5e1",
-                                stroke: "#fff",
-                                strokeWidth: 1
-                            },
-                            hover: { fill: "#94a3b8", cursor: "pointer" },
-                            pressed: { fill: "#1e293b" }
-                            }}
-                        />
-                        );
-                    })
-                    }
-                </Geographies>
+                    <Geographies geography={geoData}>
+                        {({ geographies }) =>
+                            geographies.map((geo) => {
+                                const engName = geo.properties.name;
+                                return (
+                                <Geography
+                                    key={geo.rsmKey}
+                                    geography={geo}
+                                    onClick={() => handleCitySelect(engName)}
+                                    style={{
+                                    default: {
+                                        fill: selected === engName ? "#1e293b" : "#cbd5e1",
+                                        stroke: "#fff",
+                                        strokeWidth: 1
+                                    },
+                                    hover: { fill: "#94a3b8", cursor: "pointer" },
+                                    pressed: { fill: "#1e293b" }
+                                    }}
+                                />
+                                );
+                            })
+                        }
+                    </Geographies>
                 </ComposableMap>
             </div>
 
